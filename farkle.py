@@ -33,20 +33,9 @@ print(roll_history)
 
 for k, v in roll_history.items():
 
-    if v >= 3 and k == 1:
-        points += 1000 + (100 * (v - 3))
-
-    if v == 3 and k != 5:
-        points += k * 100
-    elif k == 1 and v < 3:
-        points += v * 100
-    else:
-        points += 0
-
-    if v >= 4 and k == 5:
-        points += 500 + (50 * (v - 3))
-    elif k == 5:
-        points += v * 50
+    if k == 1:
+        if v >= 3:
+            
 
 print(points)
 
