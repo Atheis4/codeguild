@@ -1,15 +1,3 @@
-# Roll 5 six-sided di
-# Score all 5
-
-#   3 x 1 = 1000
-#   3 x 2 = 200
-#   3 x 3 = 300
-#   3 x 4 = 400
-#   3 x 5 = 500
-#   3 x 6 = 600
-#       1 = 100
-#       5 = 50
-
 # ADVANCED: Re-roll any dice, save scoring dice
 
 import random
@@ -29,14 +17,23 @@ for roll in rolls:
     roll_history[roll] = rolls.count(roll)
 
 print(rolls)
-print(roll_history)
 
 for k, v in roll_history.items():
-
     if k == 1:
+        if v >= 3 or v >= 4:
+            points += 1000 + (100 * (v - 3))
+        else:
+            points += 100 * v
+    elif k == 5:
+        if v >= 3 or v >= 4:
+            points += 500 + (50 * (v - 3))
+        else:
+            points += 50 * v
+    else:
         if v >= 3:
-            
+            points += k * 100
 
+print(roll_history)
 print(points)
 
 if points == 0:
