@@ -14,8 +14,6 @@ def add_entry():
         else:
             phone_book[name] = input('What is their number? \n> ')
 
-    phone_book_loop()
-
 def lookup_entry():
     more_lookup = True
 
@@ -31,8 +29,6 @@ def lookup_entry():
         else:
             print('I don\'t recognize that option.')
 
-    phone_book_loop()
-
 def change_entry():
     more_change = True
 
@@ -41,25 +37,23 @@ def change_entry():
 
         if new_change == 'Q'.lower() or new_change == 'QUIT'.lower():
             more_change = False
-            break
-        elif new_change:
+        elif new_change in phone_book.keys():
             phone_book[new_change] = input('What is their updated number?:\n> ')
             print(new_change, '-', phone_book[new_change])
-
-    phone_book_loop()
+        else:
+            print('I don\'t recognize that name.')
 
 def phone_book_loop():
     not_done = True
 
-    print('-' * 25)
-    print('Welcome to your Phonebook \n\nWhat would you like to do? \n1. Lookup Entries \n2. Add Entry \n3. Change Entry \n\nType QUIT to exit.')
-
     while not_done:
+        print('-' * 25)
+        print('Welcome to your Phonebook \n\nWhat would you like to do? \n1. Lookup Entries \n2. Add Entry \n3. Change Entry \n\nType QUIT to exit.')
+
         user_cmd = input('> ')
 
         if user_cmd == 'Q'.lower() or user_cmd == 'QUIT'.lower():
             not_done = False
-            break
         elif user_cmd == '1' or user_cmd == 'LOOKUP'.lower():
             lookup_entry()
         elif user_cmd == '2' or user_cmd == 'ADD'.lower():
