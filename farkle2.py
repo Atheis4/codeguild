@@ -31,7 +31,6 @@ import random
 # #     print(points)
 # #     print('-' * 30)
 
-
 rolls = []
 roll_history = {}
 total_dice = 5
@@ -77,7 +76,6 @@ if points != 0:
             try:
                 print('-' * 30)
                 print('Your current roll:', rolls)
-                print('You have {} points'.format(points))
                 print()
                 return_dice = int(input('Which dice would you like to return?\n(Type the dice number or \'re-roll\' to continue)\n> '))
                 rolls.remove(return_dice)
