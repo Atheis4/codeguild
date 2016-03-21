@@ -5,7 +5,7 @@ more_votes = True
 
 # The while loop continues to ask for votes until the user input's 'done'.
 while more_votes:
-    vote = input('Who would you like to vote for?')
+    vote = input('Who would you like to vote for?\n> ')
 
     if vote == 'done':
         more_votes = False
