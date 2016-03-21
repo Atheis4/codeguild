@@ -58,10 +58,10 @@ for k, v in roll_history.items():
         else:
             points += 50 * v
     else:
-        if v == 3:
+        if v >= 3:
             points += 100 * k
 
-print('-' * 30)
+print()
 print('Your rolls:', rolls)
 print('Your points:', points)
 print('-' * 30)
@@ -76,7 +76,9 @@ if points != 0:
         while True:
             try:
                 print('-' * 30)
-                print(rolls)
+                print('Your current roll:', rolls)
+                print('You have {} points'.format(points))
+                print()
                 return_dice = int(input('Which dice would you like to return?\n(Type the dice number or \'re-roll\' to continue)\n> '))
                 rolls.remove(return_dice)
             except ValueError:
@@ -107,13 +109,13 @@ if points != 0:
                 else:
                     points += 50 * v
             else:
-                if v == 3:
+                if v >= 3:
                     points += 100 * k
 
         print('-' * 30)
         print('Your rolls:', rolls)
-        print('Your points:', points)
-        print('-' * 30)
+        print('You have {} points:'.format(points))
+        print()
         print('Thank\'s for playing.')
         print('-' * 30)
         # End of logic()
