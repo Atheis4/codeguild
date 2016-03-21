@@ -21,12 +21,12 @@ for roll in rolls:
 # Point tally
 for k, v in roll_history.items():
     if k == 1:
-        if v >= 3 or v >= 4:
+        if v >= 3:
             points += 1000 + (100 * (v - 3))
         else:
             points += 100 * v
     elif k == 5:
-        if v >= 3 or v >= 4:
+        if v >= 3:
             points += 500 + (50 * (v - 3))
         else:
             points += 50 * v
