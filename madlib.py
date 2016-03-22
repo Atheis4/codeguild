@@ -1,27 +1,14 @@
-# make a madlib
-# ask for three words:
-    # noun
-    # adjective
-    # adverb
-# fill in the mad lib
-# print it out
-
 def noun():
     """ Prompts and recieves a noun as input from user. Returns input as value of function"""
-    print('First we need a NOUN')
-    return input('> ')
+    return input('First we need a NOUN\n> ')
 
 def adjective():
     """ Prompts and recieves an adjective as input from user. Returns input as value of function"""
-    print('Next we need ADJECTIVE')
-    return input('> ')
+    return input('Next we need ADJECTIVE\n> ')
 
 def adverb():
     """ Prompts and recieves an adverb as input from user. Returns input as value of function"""
-    print('Finally, give us an ADVERB')
-    return input('> ')
-
-# variables to store the user input
+    return input('Finally, give us an ADVERB\n> ')
 
 def construct_madlib(noun, adverb, adject):
     """ Using the return variables from the functions noun, adjective, and adverb, add said variables to a complex-ish string to construct the madlib."""
