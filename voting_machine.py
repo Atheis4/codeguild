@@ -1,31 +1,37 @@
-# The list, dictionary, and initial value of more_votes is set
-votes = []
-vote_totals = {}
-more_votes = True
+vote_totals_dict = {}
 
-# The while loop continues to ask for votes until the user input's 'done'.
-while more_votes:
-    vote = input('Who would you like to vote for?\n> ')
+def main():
+    vote_list = []
+    more_votes = True
 
-    if vote == 'done':
-        more_votes = False
-    # Each vote is added (.append()) to the end of the list of votes.
-    else:
-        votes.append(vote)
+    while more_votes:
+        vote = input('Who would you like to vote for?\n> ')
 
-# The for loop iterates (repeats over) the votes list (turned into a set to get rid of duplicates).
-for candidate in set(votes):
-    # Each unique name is assigned as a key in our dictionary and each value is set to the number of times (.count()) that name appears in our list of votes.
-    vote_totals[candidate] = votes.count(candidate)
+        if vote == 'done':
+            more_votes = False
+        else:
+            vote_list.append(vote)
 
-# Set winning_total to the highest value in our dictionary's 'list' of values.
-winning_total = max(vote_totals.values())
+    return vote_list
 
-# Print totals
-print(vote_totals)
+def create_dict_from_vote_list(vote_list):
+    for candidate in set(vote_list):
+        vote_totals_dict[candidate] = vote_list.count(candidate)
+    return vote_totals_dict
 
-# Create a new view of the dictionary's key/value pairs. Repeat through the key/value pairs...
-for k, v in vote_totals.items():
-    # if there is a value equal to our winning total...
-    if v == winning_total:
-        print(k, 'wins the election with', str(winning_total), 'votes.')
+def find_winning_vote_total(vote_totals_dict):
+    winning_total = max(vote_totals_dict.values())
+    return winning_total
+
+def declare_winner_with_dict(vote_totals_dict, winning_total):
+    print(vote_totals_dict)
+    for k, v in vote_totals_dict.items():
+        if v == winning_total:
+            print(k, 'wins the election with', str(winning_total), 'votes.')
+
+
+vote_list = main()
+vote_totals_dict = create_dict_from_vote_list(vote_list)
+winning_total = find_winning_vote_total(vote_totals_dict)
+
+declare_winner_with_dict(vote_totals_dict, winning_total)
