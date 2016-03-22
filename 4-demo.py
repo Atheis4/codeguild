@@ -1,15 +1,16 @@
+# Initialize variables
 class_name_to_roster = {}
-
 accept_input = True
+
+# while loop = as long as true, continue to accept input for student name.
 while accept_input:
 
-    print('Student name?')
-    student_name = input('> ')
+    student_name = input('Student name?\n> ')
     accept_input = student_name != 'done'
 
+    # if statement = if acceptable input for student name,
     if accept_input:
-        print('What class is ' + student_name + ' in?')
-        class_name = input('> ')
+        class_name = input('What class is ' + student_name + ' in?\n> ')
 
         if class_name in class_name_to_roster:
             old_roster = class_name_to_roster[class_name]
