@@ -1,121 +1,98 @@
 import random
+import sys
 
-# def logic()
-# # def logic(rolls, roll_history, total_dice, points):
-# #     points = 0
-# #     while total_dice > 0:
-# #         dice_roll = random.randint(1, 6)
-# #         rolls.append(dice_roll)
-# #         total_dice -= 1
-# #
-# #     for roll in rolls:
-# #         roll_history[roll] = rolls.count(roll)
-# #
-# #     for k, v in roll_history.items():
-# #         if k == 1:
-# #             if v >= 3:
-# #                 points += 1000 + (100 * (v - 3))
-# #             else:
-# #                 points += 100 * v
-# #         elif k == 1:
-# #             if v >=  3:
-# #                 points += 500 + (50 * (v - 3))
-# #             else:
-# #                 points += 50 * v
-# #         else:
-# #             if v >= 3:
-# #                 points += 100 * k
-# #
-# #     print(rolls)
-# #     print(roll_history)
-# #     print(points)
-# #     print('-' * 30)
-
-rolls = []
-roll_history = {}
 total_dice = 5
-points = 0
+rolls_list = []
 
-# logic(rolls, roll_history, total_dice, points)
-while total_dice > 0:
-    dice_roll = random.randint(1, 6)
-    rolls.append(dice_roll)
-    total_dice -= 1
+def roll_dice_add_to_list(total_dice, rolls_list):
+    """Generates a random number and appends it onto a list of our dice rolls"""
+    while total_dice > 0:
+        dice_roll = random.randint(1, 6)
+        rolls_list.append(dice_roll)
+        total_dice -= 1
+    return rolls_list
 
-for roll in rolls:
-    roll_history[roll] = rolls.count(roll)
+def generate_dict_from_rolls_list(rolls_list):
+    """Generates a dictionary of values from our list of dice rolls, clears the dictionary for multi-use"""
+    roll_history_dict = {}
+    roll_history_dict.clear()
 
-for k, v in roll_history.items():
-    if k == 1:
-        if v >= 3:
-            points += 1000 + (100 * (v - 3))
-        else:
-            points += 100 * v
-    elif k == 5:
-        if v >= 3:
-            points += 500 + (50 * (v - 3))
-        else:
-            points += 50 * v
-    else:
-        if v >= 3:
-            points += 100 * k
+    for roll in rolls_list:
+        roll_history_dict[roll] = rolls_list.count(roll)
+    return roll_history_dict
 
-print()
-print('Your rolls:', rolls)
-print('Your points:', points)
-print('-' * 30)
-# End of logic()
+def calculate_score(roll_history_dict):
+    """Runs the dictionary of roll values through our scoring system"""
+    points = 0
 
-if points != 0:
-    re_roll = input('Would you like to reroll any dice?\nY/N?\n> ')
-
-    if re_roll == 'N' or re_roll == 'n':
-        print('You have {} points. Thank\'s for playing.'.format(points))
-    else:
-        while True:
-            try:
-                print('-' * 30)
-                print('Your current roll:', rolls)
-                print()
-                return_dice = int(input('Which dice would you like to return?\n(Type the dice number or \'re-roll\' to continue)\n> '))
-                rolls.remove(return_dice)
-            except ValueError:
-                break
-
-        total_dice = 5 - len(rolls)
-        roll_history.clear()
-        points = 0
-
-        # logic(rolls, roll_history, total_dice, points)
-        while total_dice > 0:
-            dice_roll = random.randint(1, 6)
-            rolls.append(dice_roll)
-            total_dice -= 1
-
-        for roll in rolls:
-            roll_history[roll] = rolls.count(roll)
-
-        for k, v in roll_history.items():
-            if k == 1:
-                if v >= 3:
-                    points += 1000 + (100 * (v - 3))
-                else:
-                    points += 100 * v
-            elif k == 5:
-                if v >= 3:
-                    points += 500 + (50 * (v - 3))
-                else:
-                    points += 50 * v
+    for k, v in roll_history_dict.items():
+        if k == 1:
+            if v >= 3:
+                points += 1000 + (100 * (v - 3))
             else:
-                if v >= 3:
-                    points += 100 * k
+                points += 100 * v
+        elif k == 5:
+            if v >= 3:
+                points += 500 + (50 * (v - 3))
+            else:
+                points += 50 * v
+        else:
+            if v >= 3:
+                points += 100 * k
+    return points
 
-        print('-' * 30)
-        print('Your rolls:', rolls)
-        print('You have {} points:'.format(points))
-        print()
-        print('Thank\'s for playing.')
-        print('-' * 30)
-        # End of logic()
-else:
-    print('Farkle! Thank\'s for playing.')
+def check_for_farkle(points):
+    """Checks point total for Farkle and quits program"""
+    if points == 0:
+        print('Farkle')
+        sys.exit()
+
+def reroll_bool(points):
+    """Asks user if they want to reroll dice, if no, print score and quit program"""
+    reroll_prompt = input('Would you like to reroll any dice? (Y/N)\n> ')
+    if reroll_prompt == 'n' or reroll_prompt == 'N':
+        print('You have {} points. Thank\'s for playing.'.format(points))
+        sys.exit()
+
+def return_dice_for_reroll(rolls_list):
+    """Asks for dice to be returned until ValueError & Removes returned dice from list of rolls"""
+    while True:
+        try:
+            # When using, try to make 'try' blocks as short as possible.
+            print(rolls_list)
+            remove_dice = int(input('Which dice would you like to reroll.\nType the dice number or \'done\'\n> '))
+            rolls_list.remove(remove_dice)
+        except ValueError:
+            return rolls_list
+
+            # Don't use exceptions for control flow -- especially across function boundaries.
+            # input line - check to see if input is done - if not done, then convert to int.
+
+def add_reroll_to_total_dice(rolls_list):
+    """Checks the length of our roll list subtracted by five (total dice) to determine total dice to be rerolled"""
+    total_dice = 5 - len(rolls_list)
+    return total_dice
+
+def print_score(rolls_list, points):
+    """Print point total and current dice list to user"""
+    print('You have {} points'.format(points))
+    print('Your current dice:', rolls_list)
+
+rolls_list = roll_dice_add_to_list(total_dice, rolls_list)
+roll_history_dict = generate_dict_from_rolls_list(rolls_list)
+points = calculate_score(roll_history_dict)
+
+print_score(rolls_list, points)
+
+check_for_farkle(points)
+reroll_bool(points)
+return_dice_for_reroll(rolls_list)
+total_dice = add_reroll_to_total_dice(rolls_list)
+
+rolls_list = roll_dice_add_to_list(total_dice, rolls_list)
+roll_history_dict = generate_dict_from_rolls_list(rolls_list)
+points = calculate_score(roll_history_dict)
+
+print_score(rolls_list, points)
+
+check_for_farkle(points)
