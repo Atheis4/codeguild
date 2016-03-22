@@ -66,7 +66,7 @@ def return_dice_for_reroll(rolls_list):
             return rolls_list
 
             # Don't use exceptions for control flow -- especially across function boundaries.
-            # input line - check to see if input is done - if not done, then convert to int.
+            # input line - check to see if input is done -- if not done, then convert to int.
 
 def add_reroll_to_total_dice(rolls_list):
     """Checks the length of our roll list subtracted by five (total dice) to determine total dice to be rerolled"""
