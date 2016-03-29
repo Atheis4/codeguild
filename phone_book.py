@@ -52,7 +52,7 @@ def phone_book_loop():
 
         user_cmd = input('> ')
 
-        if user_cmd == 'Q'.lower() or user_cmd == 'QUIT'.lower():
+        if 'quitQUIT' in user_cmd:
             not_done = False
         elif user_cmd == '1' or user_cmd == 'LOOKUP'.lower():
             lookup_entry()
