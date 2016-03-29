@@ -3,32 +3,32 @@ def get_sentence_from_user():
     user_sentence_str = input('Veni, vidi, vici! What would you like to translate?\n> ')
     return user_sentence_str
 
-def split_sentence_add_to_list(user_sentence_str):
+def split_sentence(user_sentence_str):
     """"sets the local variable to_be_translated to a list comprised of the words from our aforementioned sentence, returns this list for the function call."""
     pre_translated_list = user_sentence_str.split()
     return pre_translated_list
 
-def translate_sentence(pre_translated_list):
+def translate_sentence_to_pig_latin(pre_translated_list):
     """Iterates through a lowercase version of the list of words to be translated and feeds it into the translation function"""
     post_translated_list = []
 
-    for word in pre_translated_list:
-        post_translated_list.append(translate_word_to_pig_latin(word))
+    for pre_translated_word in pre_translated_list:
+        post_translated_list.append(translate_word_to_pig_latin(pre_translated_word))
     return post_translated_list
 
-def translate_word_to_pig_latin(word):
+def translate_word_to_pig_latin(pre_translated_word):
     vowels = 'aeiouAEIOU'
     punctuation = '.?!,;:'
-    word = word.lower()
+    pre_translated_word = pre_translated_word.lower()
 
-    if word[0] in vowels and word[-1] in punctuation:
-        pig_latin_word = ''.join(word[:-1] + 'yay' + word[-1])
-    elif word[0] in vowels:
-        pig_latin_word = ''.join(word + 'yay')
-    elif word[-1] in punctuation:
-        pig_latin_word = ''.join(word[1:-1] + word[0] + 'ay' + word[-1])
+    if pre_translated_word[0] in vowels and pre_translated_word[-1] in punctuation:
+        pig_latin_word = ''.join(pre_translated_word[:-1] + 'yay' + pre_translated_word[-1])
+    elif pre_translated_word[0] in vowels:
+        pig_latin_word = ''.join(pre_translated_word + 'yay')
+    elif pre_translated_word[-1] in punctuation:
+        pig_latin_word = ''.join(pre_translated_word[1:-1] + pre_translated_word[0] + 'ay' + word[-1])
     else:
-        pig_latin_word = ''.join(word[1:] + ''.join(word[:1].lower() + 'ay'))
+        pig_latin_word = ''.join(pre_translated_word[1:] + ''.join(pre_translated_word[:1].lower() + 'ay'))
     return pig_latin_word
 
 
