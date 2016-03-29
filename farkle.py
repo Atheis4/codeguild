@@ -2,37 +2,48 @@
 
 import random
 
+def roll_dice():
+# Roll dice with randint, add rolls to list, decrement total_dice.
+    while total_dice > 0:
+        dice = random.randint(1, 6)
+        rolls.append(dice)
+        total_dice -= 1
+        return rolls
+
+def build_dict_of_rolls():
+# For rolls in list, build dictionary 'roll_history': with key = dice value, value = occurance of dice value.
+    for roll in rolls:
+        roll_history[roll] = rolls.count(roll)
+        return roll_history
+
+def tally_points():
+# Point tally
+    for k, v in roll_history.items():
+        if k == 1:
+            if v >= 3:
+                points += 1000 + (100 * (v - 3))
+            else:
+                points += 100 * v
+        elif k == 5:
+            if v >= 3:
+                points += 500 + (50 * (v - 3))
+            else:
+                points += 50 * v
+        else:
+            if v >= 3:
+                points += k * 100
+    return points
+
 # Initialize variables
 rolls = [] # List
 total_dice = 5 # Decrementing value for while loop - represents number of dice to roll.
 points = 0
 roll_history = {} # Dictionary
 
-# Roll dice with randint, add rolls to list, decrement total_dice.
-while total_dice > 0:
-    dice = random.randint(1, 6)
-    rolls.append(dice)
-    total_dice -= 1
+roll_dice()
+build_dict_of_rolls()
+tally_points()
 
-# For rolls in list, build dictionary 'roll_history': with key = dice value, value = occurance of dice value.
-for roll in rolls:
-    roll_history[roll] = rolls.count(roll)
-
-# Point tally
-for k, v in roll_history.items():
-    if k == 1:
-        if v >= 3:
-            points += 1000 + (100 * (v - 3))
-        else:
-            points += 100 * v
-    elif k == 5:
-        if v >= 3:
-            points += 500 + (50 * (v - 3))
-        else:
-            points += 50 * v
-    else:
-        if v >= 3:
-            points += k * 100
 
 print(rolls)
 print(roll_history)
