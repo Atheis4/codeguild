@@ -44,9 +44,12 @@ class Business:
             self.name, self.reviews
         )
 
-    def find_average(self, rating):
-        self.rating = self.reviews.rating
-        print(self.reviews.rating)
+    def find_average(self):
+        listy = []
+        for review in self.reviews:
+            listy.append(review.rating)
+        print(statistics.mean(listy))
+
 
 
 
@@ -70,8 +73,12 @@ for i in list_of_businesses:
     rating_list = []
     for x in i.reviews:
         rating_list.append(x.rating)
-    print(statistics.mean(rating_list))
+    # print(statistics.mean(rating_list))
 
 
-for j in list_of_businesses:
-    print(j.find_average)
+# for j in list_of_businesses:
+    # print(j.find_average)
+
+first_biz = list_of_businesses[0]
+
+avg_rating = Business.find_average(first_biz)
