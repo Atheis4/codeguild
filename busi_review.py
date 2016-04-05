@@ -44,51 +44,34 @@ class Business:
             self.name, self.reviews
         )
 
-    def average_rating(self, rating):
-        pass
+    def find_average(self, rating):
+        self.rating = self.reviews.rating
+        print(self.reviews.rating)
 
 
 
-list_of_reviews = []
+def instantiate_review_and_biz_classes_append_to_list(raw_business_data):
+    list_of_businesses = []
 
-for dicts in raw_business_data:
-    # print(dicts)
-    Business(dicts['business_name'], dicts['reviews'])
-    for review in dicts['reviews']:
-        x = review['rating']
-        y = review['text']
-        list_of_reviews.append(Review(x, y))
-
-
-
-
-# for i in list_of_reviews:
-#     print(i.rating, i.text)
-#
-# for raw_business_data['business_name']:
-#     print(raw_business_data['business_name'])
-
-# voodoo = Business('Voodoo', [])
-#
-# new_list = [Review(3, 'great!')]
-#
-#
-# voodoo = Business('Voodoo', new_list)
-#
-# print(voodoo)
+    for dicts in raw_business_data:
+        reviews_list = []
+        for review in dicts['reviews']:
+            x = review['rating']
+            y = review['text']
+            reviews_list.append(Review(x, y))
+        list_of_businesses.append(Business(dicts['business_name'], reviews_list))
+    return list_of_businesses
 
 
+list_of_businesses = instantiate_review_and_biz_classes_append_to_list(raw_business_data)
 
 
-#
-# for x, y in word_pair_list:
-#     if x not in paired_word_dict:
-#         paired_word_dict[x] = {}
-#     if y not in paired_word_dict[x]:
-#         paired_word_dict[x][y] = 0
-#     paired_word_dict[x][y] += 1
+for i in list_of_businesses:
+    rating_list = []
+    for x in i.reviews:
+        rating_list.append(x.rating)
+    print(statistics.mean(rating_list))
 
 
-
-
-# new_dict = {k=business_name: {k2=rating: v=?, k3=text: v=?}}
+for j in list_of_businesses:
+    print(j.find_average)
