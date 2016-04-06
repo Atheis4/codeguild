@@ -79,7 +79,6 @@ def main():
     print()
     print_date_with_most_rain_on_average(day_to_rainfall_total_dict)
 
-
     user_choice = True
 
     while user_choice:
