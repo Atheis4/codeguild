@@ -1,5 +1,5 @@
 import urllib.request
-import statistics
+import statistics as stats
 
 def import_web_data():
     with urllib.request.urlopen('http://or.water.usgs.gov/non-usgs/bes/sunnyside.rain') as website:
@@ -57,35 +57,37 @@ def create_avg_day_to_rain_total_dict(rainfall_dict):
 def print_date_with_most_rain_on_average(day_to_rainfall_total_dict):
     avg_rainfall_list = []
     for a, b in day_to_rainfall_total_dict.items():
-        avg_rainfall_list.append(statistics.mean(day_to_rainfall_total_dict[a]))
+        avg_rainfall_list.append(stats.mean(day_to_rainfall_total_dict[a]))
     most_rainfall = max(avg_rainfall_list)
-    value_key_tuple = [(statistics.mean(v), k) for (k, v) in day_to_rainfall_total_dict.items()]
+    value_key_tuple = [(stats.mean(v), k) for (k, v) in day_to_rainfall_total_dict.items()]
 
     for v, k in value_key_tuple:
         if v == most_rainfall:
             print('The day with the most rain on average is {0} with\n{1:.2f} inches of rain.'.format(k, v))
 
-
-lines = import_web_data()
-new_line_list = strip_split_slice_web_data(lines)
-date_to_rain_tuple = get_rid_of_null_data_turn_numbers_to_int(new_line_list)
-rainfall_dict = create_dict_from_data_tuple(date_to_rain_tuple)
-print()
-print_single_day_with_most_rain(rainfall_dict)
-year_to_rainfall_total_dict = create_year_to_rain_total_dict(rainfall_dict)
-print()
-print_year_with_most_rain(year_to_rainfall_total_dict)
-day_to_rainfall_total_dict = create_avg_day_to_rain_total_dict(rainfall_dict)
-print()
-print_date_with_most_rain_on_average(day_to_rainfall_total_dict)
-
-
-user_choice = True
-
-while user_choice:
+def main():
+    lines = import_web_data()
+    new_line_list = strip_split_slice_web_data(lines)
+    date_to_rain_tuple = get_rid_of_null_data_turn_numbers_to_int(new_line_list)
+    rainfall_dict = create_dict_from_data_tuple(date_to_rain_tuple)
     print()
-    date_lookup = input('Would you like to know the future\'s weather?\n(Enter date as DD-MMM, ex. 04-MAR - type \'done\' to quit\n> ')
-    if date_lookup in day_to_rainfall_total_dict.keys():
-        print('(If past is prologue: On', date_lookup, 'it might rain', statistics.mean(day_to_rainfall_total_dict[date_lookup]), 'inches.\nOr not.')
-    if date_lookup == 'done':
-        user_choice = False
+    print_single_day_with_most_rain(rainfall_dict)
+    year_to_rainfall_total_dict = create_year_to_rain_total_dict(rainfall_dict)
+    print()
+    print_year_with_most_rain(year_to_rainfall_total_dict)
+    day_to_rainfall_total_dict = create_avg_day_to_rain_total_dict(rainfall_dict)
+    print()
+    print_date_with_most_rain_on_average(day_to_rainfall_total_dict)
+
+
+    user_choice = True
+
+    while user_choice:
+        print()
+        date_lookup = input('Would you like to know the future\'s weather?\n(Enter date as DD-MMM, ex. 04-MAR -- type \'done\' to quit\n> ')
+        if date_lookup in day_to_rainfall_total_dict.keys():
+            print('If past is prologue: On {0} it might rain {1:.2f} inches.\nOr not.'.format(date_lookup, stats.mean(day_to_rainfall_total_dict[date_lookup])))
+        if date_lookup == 'done':
+            user_choice = False
+
+main()
