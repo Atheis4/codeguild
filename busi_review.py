@@ -1,84 +1,109 @@
-import statistics
-import math
+import random
 
 raw_business_data = [
   {
     'business_name': 'Salt & Straw',
-    'reviews': [
-      {'rating': 5, 'text': 'Lucious ice cream!'},
-      {'rating': 4, 'text': 'Super tasty, but such a long line!'},
-      {'rating': 2, 'text': 'Overrated, but I like sugar.'}
-    ],
   },
   {
     'business_name': 'Voodoo Donuts',
-    'reviews': [
-      {'rating': 1, 'text': 'I do not like bubblegum on my donuts.'},
-      {'rating': 5, 'text': 'Pink building is so cute!'},
-      {'rating': 2, 'text': 'Diabetes inducing.'}
-    ],
   },
 ]
-
+raw_user_data = [
+  {'user_name': 'Abby'},
+  {'user_name': 'Helen'},
+  {'user_name': 'Bobby'},
+]
+raw_review_data = [
+  {'user_name': 'Abby', 'business_name': 'Salt & Straw', 'rating': 5, 'text': 'Lucious ice cream!'},
+  {'user_name': 'Bobby', 'business_name': 'Salt & Straw', 'rating': 4, 'text': 'Super tasty, but such a long line!'},
+  {'user_name': 'Abby', 'business_name': 'Salt & Straw', 'rating': 2, 'text': 'Overrated, but I like sugar.'},
+  {'user_name': 'Helen', 'business_name': 'Voodoo Donuts', 'rating': 1, 'text': 'I do not like bubblegum on my donuts.'},
+  {'user_name': 'Bobby', 'business_name': 'Voodoo Donuts', 'rating': 5, 'text': 'Pink building is so cute!'},
+  {'user_name': 'Abby', 'business_name': 'Voodoo Donuts', 'rating': 2, 'text': 'Diabetes inducing.'},
+]
 
 class Review:
     """Business Review"""
-    def __init__(self, rating, text):
+    def __init__(self, user_name, business_name, rating, text):
+        self.user_name = user_name
+        self.business_name = business_name
         self.rating = rating
         self.text = text
 
     def __repr__(self):
-        return 'Review(rating: {}, text: \'{}\')'.format(
-            self.rating, self.text
+        return 'Review(user: {}, business: {}, rating: {}, text: \'{}\')'.format(
+            self.user_name, self.business_name, self.rating, self.text
         )
-
 
 class Business:
     """Business"""
-    def __init__(self, name, reviews):
+    def __init__(self, name):
         self.name = name
-        self.reviews = reviews
 
     def __repr__(self):
-        return 'Business(name: {}, reviews: {})'.format(
-            self.name, self.reviews
+        return 'Business(name: {})'.format(
+            self.name
         )
 
-    def find_average(self):
-        listy = []
-        for review in self.reviews:
-            listy.append(review.rating)
-        print(statistics.mean(listy))
+class User:
+    """User"""
+    def __init__(self, user_name):
+        self.user_name = user_name
+
+    def __repr__(self):
+        return 'User(name: {})'.format(
+            self.user_name
+        )
 
 
+def instantiate_reviews_save_to_list(data):
+    reviews_list = []
+
+    for review_dict in data:
+        a = review_dict['user_name']
+        b = review_dict['business_name']
+        c = review_dict['rating']
+        d = review_dict['text']
+        reviews_list.append(Review(a, b, c, d))
+
+    return reviews_list
 
 
-def instantiate_review_and_biz_classes_append_to_list(raw_business_data):
-    list_of_businesses = []
-
-    for dicts in raw_business_data:
-        reviews_list = []
-        for review in dicts['reviews']:
-            x = review['rating']
-            y = review['text']
-            reviews_list.append(Review(x, y))
-        list_of_businesses.append(Business(dicts['business_name'], reviews_list))
-    return list_of_businesses
+def create_total_user_set(reviews_list):
+    sum_user_list = []
+    sum_user_list = [review.user_name for review in reviews_list]
+    sum_user_set = set(sum_user_list)
+    return sum_user_set
 
 
-list_of_businesses = instantiate_review_and_biz_classes_append_to_list(raw_business_data)
+def filter_reviews_to_name(reviews_list, user_name):
+    unique_user_reviews_list = []
+
+    for review_object in reviews_list:
+        if user_name in review_object.user_name:
+            unique_user_reviews_list.append(review_object)
+
+    return unique_user_reviews_list
 
 
-for i in list_of_businesses:
-    rating_list = []
-    for x in i.reviews:
-        rating_list.append(x.rating)
-    # print(statistics.mean(rating_list))
+def main():
+    reviews_list = instantiate_reviews_save_to_list(raw_review_data)
+    sum_user_set = create_total_user_set(reviews_list)
 
 
-# for j in list_of_businesses:
-    # print(j.find_average)
+    lookup = True
 
-first_biz = list_of_businesses[0]
+    while lookup:
+        user_search = input('Which user\'s reviews would you like to find?\n(type \'done\' to quit)\n> ')
+        if user_search == 'done':
+            lookup = False
 
-avg_rating = Business.find_average(first_biz)
+        if user_search in sum_user_set:
+            unique_user_reviews_list = filter_reviews_to_name(reviews_list, user_search)
+
+            print(unique_user_reviews_list)
+
+        else:
+            print('We don\'t have reviews from that user.\n')
+
+main()
