@@ -55,7 +55,6 @@ class User:
             self.user_name
         )
 
-
 def instantiate_reviews_save_to_list(data):
     reviews_list = []
 
@@ -68,13 +67,11 @@ def instantiate_reviews_save_to_list(data):
 
     return reviews_list
 
-
 def create_total_user_set(reviews_list):
     sum_user_list = []
     sum_user_list = [review.user_name for review in reviews_list]
     sum_user_set = set(sum_user_list)
     return sum_user_set
-
 
 def filter_reviews_to_name(reviews_list, user_name):
     unique_user_reviews_list = []
@@ -85,11 +82,9 @@ def filter_reviews_to_name(reviews_list, user_name):
 
     return unique_user_reviews_list
 
-
 def main():
     reviews_list = instantiate_reviews_save_to_list(raw_review_data)
     sum_user_set = create_total_user_set(reviews_list)
-
 
     lookup = True
 
@@ -97,12 +92,9 @@ def main():
         user_search = input('Which user\'s reviews would you like to find?\n(type \'done\' to quit)\n> ')
         if user_search == 'done':
             lookup = False
-
         if user_search in sum_user_set:
             unique_user_reviews_list = filter_reviews_to_name(reviews_list, user_search)
-
             print(unique_user_reviews_list)
-
         else:
             print('We don\'t have reviews from that user.\n')
 
