@@ -1,4 +1,4 @@
-import statistics
+import statistics as stats
 
 def open_file_text():
     """opens text file and saves as readlines"""
