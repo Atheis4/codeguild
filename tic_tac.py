@@ -114,36 +114,54 @@ class CoordsTTTBoard:
     def place(self, x, y, player):
         """Places a token on the board at some given coordinates."""
         self.x_y_token_triplets.append((x, y, player))
-        print(self.x_y_token_triplets)
 
     def won(self):
         """Return which token type won ('X' or 'O') or None if no one
         has won yet."""
-        # master_list = []
-        # diag_list = [[self.coord_board[0][0], self.coord_board[1][1], self.coord_board[2][2]],[self.coord_board[0][2], self.coord_board[1][1], self.coord_board[2][0]]]
-        #
-        # [master_list.append(row) for row in self.coord_board]
-        # [master_list.append(list(row)) for row in zip(*self.coord_board)]
-        # [master_list.append(item) for item in diag_list]
+        X_val_x = []
+        X_val_y = []
+        O_val_x = []
+        O_val_y = []
 
-        # if ['X','X','X'] in master_list:
-        #     return 'X'
-        # elif ['O', 'O', 'O'] in master_list:
-        #     return 'O'
-        # else:
-        #     return None
-        pass
+
+        for x, y, token in self.x_y_token_triplets:
+            if token == 'X':
+                X_val_x.append(x)
+                X_val_y.append(y)
+            else:
+                O_val_x.append(x)
+                O_val_y.append(y)
+
+        if X_val_x.count(0) == 3 or X_val_y.count(0) == 3:
+            return 'X'
+        elif X_val_x.count(1) == 3 or X_val_y.count(1) == 3:
+            return 'X'
+        elif X_val_x.count(2) == 3 or X_val_y.count(2) == 3:
+            return 'X'
+        elif len(set(X_val_x)) == 3 and len(set(X_val_y)) == 3:
+            return 'X'
+
+        elif O_val_x.count(0) == 3 or O_val_y.count(0) == 3:
+            return 'O'
+        elif O_val_x.count(1) == 3 or O_val_y.count(1) == 3:
+            return 'O'
+        elif O_val_x.count(2) == 3 or O_val_y.count(2) == 3:
+            return 'O'
+        elif len(set(O_val_x)) == 3 and len(set(O_val_y)) == 3:
+            return 'O'
+        else:
+            return None
 
     def __str__(self):
         """Returns a string representation of the board."""
         coord_board = [[' ' for i in range(3)] for i in range(3)]
         for x, y, player in self.x_y_token_triplets:
-            self.coord_board[y][x] = player
+            coord_board[y][x] = player
 
         return '{}\n{}\n{}\n'.format(
-            '|'.join(self.coord_board[0]),
-            '|'.join(self.coord_board[1]),
-            '|'.join(self.coord_board[2])
+            '|'.join(coord_board[0]),
+            '|'.join(coord_board[1]),
+            '|'.join(coord_board[2])
         )
 
 def play(board):
@@ -167,7 +185,7 @@ def main():
     play(board1)
     board2 = ListListTTTBoard()
     play(board2)
-    # board3 = CoordsTTTBoard()
-    # play(board3)
+    board3 = CoordsTTTBoard()
+    play(board3)
 
 main()
