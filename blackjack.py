@@ -6,14 +6,18 @@ class Deck:
         self.cards = cards
 
     def __repr__(self):
-        return 'Deck(cards: {})'.format(
-            self.cards
-        )
+        return 'Deck(cards: {})'.format(self.cards)
 
-    # def __str__(self):
-    #     return 'Cards in deck: {}'.format(
-    #         self.cards
-    #     )
+    def deal_two(self):
+        delt_cards = []
+        for i in range(2):
+            delt_cards.append(self.cards.pop(random.randint(0, len(self.cards) - 1)))
+        return delt_cards
+
+    def hit(self):
+        new_card = []
+        new_card.append(self.cards.pop(random.randint(0, len(self.cards) - 1)))
+        return new_card
 
 class Card:
     """Docstring for Card"""
@@ -21,74 +25,58 @@ class Card:
         self.suit = suit
         self.value = value
 
-    def __str__(self):
-        return '{} of {}'.format(
-            self.value, self.suit
-        )
-
-    # def __repr__(self):
-    #     return 'Card(suit: {}, value: {})'.format(
-    #         self.suit, self.value
-    #     )
+    def __repr__(self):
+        return '{} of {}'.format(self.value, self.suit)
 
 class Hand:
     """Docstring for Hand"""
     def __init__(self, cards):
         self.cards = cards
 
-    def __str__(self):
-        return '{}'.format(
-            self.cards
-        )
+    def __repr__(self):
+        return 'Hand(cards: {})'.format(self.cards)
 
-    # def __repr__(self):
-    #     return 'Hand(cards: {})'.format(
-    #         self.cards
-    #     )
+    def score(self):
+        score = 0
+        values = 'ace king queen jack'.split()
 
-def create_cards(suits, values_list):
+        for card in self.cards:
+            if card.value == 'ace':
+                score += 1
+            elif card.value in values[1:]:
+                score += 10
+            else:
+                score += int(card.value)
+        for card in self.cards:
+            if card.value == 'ace' and (score + 10) <= 21:
+                score += 10
+        return score
+
+def create_cards():
+    suits = 'spades hearts diamonds clubs'.split()
+    values_list = ['ace', 'king', 'queen', 'jack', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     card_list_master = []
-    # Nested list comprehension to build a complete list of cards
+    # Nested list comprehension to build a complete list of 52 cards
     [[card_list_master.append('{} {}'.format(suit, value)) for value in values_list] for suit in suits]
     return card_list_master
 
-def create_deck(card_list_master):
+def create_deck(card_list):
     deck_list = []
     # List comprehension appends Card object with suit/value to deck_list
-    [deck_list.append(Card(card.split()[0], card.split()[1])) for card in card_list_master]
+    [deck_list.append(Card(card.split()[0], card.split()[1])) for card in card_list]
     return deck_list
 
-def deal_two_cards(deck_list):
-    delt_cards_list = []
-    for i in range(2):
-        delt_cards_list.append(deck_list.pop(random.randint(0, len(deck_list) - 1)))
-    return delt_cards_list
-
-def draw_card_from_deck(deck_list):
-    card = []
-    card.append(deck_list.pop(random.randint(0, len(deck_list) - 1)))
-    return card
-
 def main():
+    deck = Deck(create_deck(create_cards()))
 
-    suits = 'spades hearts diamonds clubs'.split()
-    values_list = ['ace', 'king', 'queen', 'jack', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+    player_hand = Hand(deck.deal_two())
+    dealer_hand = Hand(deck.deal_two())
 
-    card_list_master = create_cards(suits, values_list)
-    deck_list = create_deck(card_list_master)
-    deck = Deck(deck_list)
-    delt_cards_list = deal_two_cards(deck_list)
+    print('\nYour hand: {}, score: {}\nDealer hand: {}, score {}\n'.format(player_hand, player_hand.score(), dealer_hand, dealer_hand.score()))
 
-    player_hand = Hand(deal_two_cards(deck_list))
-    dealer_hand = Hand(deal_two_cards(deck_list))
+    player_hand.cards += deck.hit()
+    print(player_hand, player_hand.score())
+    
 
-    # function for adding a card to a hand... Function might be better as a class method... Then the only thing that needs to happen is an updated list being passed into the method... Rather than the rigamorole I have currently...
-
-    # Player one goes first... options - hit, Stay
-
-    print('Your hand: {}.\nDealer hand: {}'.format(player_hand, dealer_hand))
-
-    player_choice = input('Hit or stay?\n> ')
-
-
-main()
+if __name__ == "__main__":
+    main()
