@@ -91,4 +91,5 @@ def main():
             else:
                 print('not a valid command')
 
-# main()
+if __name__ == "__main__":
+    main()
