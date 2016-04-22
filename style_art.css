@@ -1,0 +1,258 @@
+/*====================
+  Base Element Styles
+=====================*/
+
+html {
+  background-color: #68959E;
+  background:
+            linear-gradient(0deg, #fff, transparent),
+            linear-gradient(#021d4a, transparent),
+            #021d4a url(img/008.102.1.2_2768.png) repeat center;
+}
+
+body {
+  font-size: 16px;
+  max-width: 90%;
+  margin: 0 auto;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+
+/*====================
+  Base Layout Styles
+=====================*/
+/*---- Header ----*/
+
+.wrap {
+  min-height: calc(100vh - 180px);
+}
+
+.main-header div {
+  border-bottom: solid 2px #fff;
+}
+
+/*---- Nav ----*/
+
+.main-nav {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 7.5px;
+}
+
+.main-nav a {
+  font-size: 1.25em;
+  margin: 10px 5px auto;
+  padding: 20px 35px 20px 35px;
+  border: solid 1px #fff;
+  background-color: rgba(255, 255, 255, .25);
+  min-width: 80%;
+  text-align: center;
+}
+
+/*---- Content ----*/
+
+.gallery-title {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.first-img img{
+  max-width: 96%;
+  margin-top: 15px;
+  border: solid white 7.5px;
+}
+
+.gallery {
+  margin-top: 15px;
+}
+
+.gallery img {
+  max-width: 96%;
+  margin-top: 15px;
+  border: solid white 7.5px;
+}
+
+.gallery p {
+  background-color: rgba(0,0,0,.5);
+  margin: 0 15px 0 27px;
+  padding: 15px;
+  text-align: center;
+}
+
+#my-pic {
+  max-width: 20%;
+  border-radius: 100%;
+  float: right;
+  margin: 20px 0 auto;
+}
+
+.bio p {
+  color: #fff;
+}
+
+/*---- Footer ----*/
+
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.social img {
+  max-width: 45px;
+  margin: 0 5px;
+  padding-left: 5px;
+}
+
+.main-footer a,
+.main-footer p {
+  color: #68959E;
+  font-size: 1em;
+}
+
+/*====================
+  Pseudo Elements
+=====================*/
+
+
+
+
+
+/*====================
+  Pseudo Classes
+=====================*/
+
+.main-nav a:hover {
+  color: black;
+  background-color: white;
+}
+
+.main-nav a:active {
+
+}
+
+
+/*====================
+  Media Queries
+=====================*/
+
+@media (min-width: 768px) {
+  .wrap {
+    min-height: calc(100vh - 180px);
+  }
+
+  h1 {
+    text-align: right;
+    padding-right: 35px;
+    font-size: 2.5em;
+  }
+
+  .main-nav {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+
+    float: left;
+    max-width: 20%;
+    max-height: 100%;
+    margin-right: 60px;
+  }
+
+  .main-nav a {
+    font-size: 1.5em;
+  }
+
+  .first-img img,
+  .gallery img {
+    max-width: 80%;
+    margin: 30px 0px 15px 25px;
+  }
+
+  #magenta {
+    max-width: 75%;
+  }
+
+  .gallery-title {
+    font-size: 2em;
+  }
+
+  .gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: ;
+  }
+
+  .gallery div {
+    max-width: 40%;
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    min-height: calc(100vh - 180px);
+  }
+
+  .first-img img{
+    max-width: 30%;
+    margin: 15px 0px 15px 25px;
+  }
+
+  .gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: ;
+  }
+
+  .gallery img {
+    max-height: 500px;
+    max-width: 85%;
+  }
+
+  #magenta {
+    max-width: 85%;
+  }
+
+}
