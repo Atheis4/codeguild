@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" value="Andrew">
+      </div>
+      <div>
+        <label for="dinner">What did you have for dinner last night:</label>
+        <input type="text" id="dinner" value="hot dog">
+      </div>
+      <div>
+        <label>Meat<input type="checkbox" id="meat"></label>
+        <label>Potatoes<input type="checkbox" id="potatoes"></label>
+        <label>Broccoli<input type="checkbox" id="broccoli"></label>
+        <label>Cheese<input type="checkbox" id="cheese"></label>
+      </div>
+      <div>
+        <label for="diet">Are you a vegetarian?</label>
+        <!-- To ensure only one button can be selected, set the name of the various radio buttons to the same value... -->
+        <label>Yes<input type="radio" id="vegetarian" name="vegetarian"></label>
+        <label>No<input type="radio" id="vegetarian" name="vegetarian"></label>
+      </div>
+      <div>
+        <label for="ice cream">What is your favorite ice cream flavor?</label>
+        <select name="ice cream">
+          <option value="chocolate">Chocolate</option>
+          <option value="vanilla">Vanilla</option>
+          <option value="cook and cream">Cookies and Cream</option>
+          <option value="strawberry">Strawberry</option>
+          <option value="mint chocolate">Mint Chocolate Chip</option>
+          <option value="rocky road">Rocky Road</option>
+        </select>
+      </div>
+      <div>
+        <textarea type="msg">What was your most memorable meal?</textarea>
+      </div>
+      <div>
+        <label for="hunger">Are you hungry?</label>
+        <label>Yes<input type="radio" name="hunger"></label>
+        <label>No<input type="radio" name="hunger"></label>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
