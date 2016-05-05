@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
 // 1. INPUT FUNCTIONS
 //Get input field value f(x)s
 function getName() {
-  return $("#name").val();
+  return $('#name').val();
 }
 
 function getBirth() {
-  return $("#birth").val();
+  return $('#birth').val();
 }
 
 function getPhone() {
-  return $("#phone").val()
+  return $('#phone').val();
 }
 
 //2. VALIDATION FUNCTIONS
 //Validate Name field
 function validNameFirstLast(name) {
   var valid = false;
-  var nameArray = name.split(" ");
+  var nameArray = name.split(' ');
   if (nameArray.length >= 2) {
     valid = true;
   }
@@ -27,8 +27,8 @@ function validNameFirstLast(name) {
 
 function validNameCapitals(name) {
   var valid = false;
-  var nameArray = name.split(" ");
-  var capitalCount = 0
+  var nameArray = name.split(' ');
+  var capitalCount = 0;
   for (var i = 0; i < nameArray.length; i += 1) {
     if (/^[A-Z]/.test(nameArray[i]) === true) {
       capitalCount += 1;
@@ -80,32 +80,32 @@ function validPhoneNumber(phone) {
 // 3. CREATE FUNCTIONS
 //Create success dropdown
 function createSuccessMsg() {
-  var successText = $("<p></p>").text("Congratulations, all fields validated!")
-  var newDiv = $("<div></div>").attr("id", "success");
-  $("body").prepend(newDiv);
-  $("#success").append(successText);
+  var successText = $('<p></p>').text('Congratulations, all fields validated!');
+  var newDiv = $('<div></div>').attr('id', 'success');
+  $('body').prepend(newDiv);
+  $('#success').append(successText);
 }
 
 //Create error dropdown
 function createErrorMsg() {
-  var errorText = $("<p></p>").text("Sorry, something is not right.")
-  var newDiv = $("<div></div>").attr("id", "fail");
-  $("body").prepend(newDiv);
-  $("#fail").append(errorText);
+  var errorText = $('<p></p>').text('Sorry, something is not right.');
+  var newDiv = $('<div></div>').attr('id', 'fail');
+  $('body').prepend(newDiv);
+  $('#fail').append(errorText);
 }
 
 // 4. MODIFY FUNCTIONS
 //Change the background-color of input boxes if valid
 function updateNameBoxColor() {
-  $("#name").css("background-color", "lightgreen");
+  $('#name').css('background-color', 'lightgreen');
 }
 
 function updateBirthBoxColor() {
-  $("#birth").css("background-color", "lightgreen");
+  $('#birth').css('background-color', 'lightgreen');
 }
 
 function updatePhoneBoxColor() {
-  $("#phone").css("background-color", "lightgreen");
+  $('#phone').css('background-color', 'lightgreen');
 }
 
 // 5. MAIN FUNCTIONS
@@ -115,13 +115,14 @@ function getAndTestInputs() {
   var birth = getBirth();
   var phone = getPhone();
   var gestaltValid = false;
-  if (validNameSumFunction(name) && validBirthDate(birth) && validPhoneNumber(phone)) {
+  if (validNameSumFunction(name) &&
+      validBirthDate(birth) &&
+      validPhoneNumber(phone)) {
     gestaltValid = true;
   }
   if (gestaltValid === true) {
     createSuccessMsg();
-  }
-  else {
+  } else {
     createErrorMsg();
   }
 }
@@ -131,9 +132,8 @@ function nameBoxValid() {
   var name = getName();
   if (validNameSumFunction(name) === true) {
     updateNameBoxColor();
-  }
-  else {
-    $("#name").css("background-color", "yellow");
+  } else {
+    $('#name').css('background-color', 'yellow');
   }
 }
 
@@ -142,9 +142,8 @@ function birthBoxValid() {
   var birth = getBirth();
   if (validBirthDate(birth) === true) {
     updateBirthBoxColor();
-  }
-  else {
-    $("#birth").css("background-color", "yellow");
+  } else {
+    $('#birth').css('background-color', 'yellow');
   }
 }
 
@@ -153,22 +152,21 @@ function phoneBoxValid() {
   var phone = getPhone();
   if (validPhoneNumber(phone) === true) {
     updatePhoneBoxColor();
-  }
-  else {
-    $("#phone").css("background-color", "yellow");
+  } else {
+    $('#phone').css('background-color', 'yellow');
   }
 }
 
 // 6. REGISTER FUNCTIONS
 //Event Handlers
 function registerInitialEventHandlers() {
-  $("form").on("submit", function (event) {
+  $('form').on('submit', function(event) {
     event.preventDefault();
     getAndTestInputs();
   });
-  $("#name").on("input", nameBoxValid);
-  $("#birth").on("input", birthBoxValid);
-  $("#phone").on("input", phoneBoxValid);
+  $('#name').on('input', nameBoxValid);
+  $('#birth').on('input', birthBoxValid);
+  $('#phone').on('input', phoneBoxValid);
 }
 
 $(document).ready(function() {
