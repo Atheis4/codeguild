@@ -6,11 +6,17 @@
     <link rel="stylesheet" type="text/css" href="validator.css">
     <title></title>
   </head>
+
   <body>
     <form>
-      <input id="name">
-      <input id="birth-date">
-      <input id="phone">
+      <label>Full Name (First Last)<input id="name" type="text">
+      <label>Birth Date (YYYY-MM-DD)<input id="birth" type="text">
+      <label>Phone Number (###-###-####)<input id="phone" type="text">
+      <input id="submit" type="submit"></input>
     </form>
+
+    <script src="https://cdn.jsdelivr.net/lodash/4.11.2/lodash.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="validator.js"></script>
   </body>
 </html>

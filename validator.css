@@ -1,0 +1,23 @@
+input {
+  background-color: inherit;
+}
+
+#submit {
+  background-color: inherit;
+}
+
+#success {
+  width: 100%;
+  background-color: lightgreen;
+  border: 1px green solid;
+}
+
+#fail {
+  width: 100%;
+  background-color: pink;
+  border: 1px red solid;
+}
+
+.valid {
+  background-color: lightgreen;
+}
