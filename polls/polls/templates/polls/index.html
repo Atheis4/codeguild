@@ -13,12 +13,14 @@
         <th>Flavor</th>
         <th>Percentage</th>
       </tr>
-      {% for flavor, percentage in flavor_dict.items %}
+
+      {% for flavor, percentage in flavor_to_percentage.items %}
       <tr>
         <td>{{ flavor }}</td>
         <td>{{ percentage }}</td>
       </tr>
       {% endfor %}
+
     </table>
     <a href="{% url 'poll' %}">Click Here to Return to Poll Screen</a>
   <script src="{% static 'polls/polls.js' %}"></script>
