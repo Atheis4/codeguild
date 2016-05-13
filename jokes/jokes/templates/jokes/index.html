@@ -15,12 +15,8 @@
     {% endblock %}
     {% for joke in joke_list %}
     <section class="joke">
-      <div class="setup">
-        <p>{{ joke.setup }}</p>
-      </div>
-      <div class="punch">
-        <p>{{ joke.punchline }}</p>
-      </div>
+      <div class="setup">{{ joke.setup }}</div>
+      <div class="punch">{{ joke.punchline }}</div>
     </section>
     {% endfor %}
     <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
