@@ -1,0 +1,28 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+div {
+  width: 35%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+p {
+  text-align: center;
+}
+
+.joke {
+  display: flex;
+  margin: 5px;
+  content: center;
+}
+
+.punch {
+  visibility: hidden;;
+}

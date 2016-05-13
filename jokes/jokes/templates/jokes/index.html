@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jokes</title>
+    <link rel="stylesheet" href="{% static 'jokes/style.css' %}">
+  </head>
+  <body>
+    <h1><a href="{% url 'index' %}">Jokestr</a></h1>
+    <a href="{% url 'form_page' %}">Post a joke</a>
+    {% block form %}
+    {% endblock %}
+    {% block ack %}
+    {% endblock %}
+    {% for joke in joke_list %}
+    <section class="joke">
+      <div class="setup">
+        <p>{{ joke.setup }}</p>
+      </div>
+      <div class="punch">
+        <p>{{ joke.punchline }}</p>
+      </div>
+    </section>
+    {% endfor %}
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="{% static 'jokes/jokes.js' %}"></script>
+  </body>
+</html>

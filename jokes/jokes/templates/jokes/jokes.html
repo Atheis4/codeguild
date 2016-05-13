@@ -1,0 +1,8 @@
+{% extends "jokes/index.html" %}
+
+{% block jokes %}
+{% for joke in joke_list %}
+<div>{{ joke.setup }}</div>
+<div>{{ joke.punchline }}</div>
+{% endfor %}
+{% endblock %}
