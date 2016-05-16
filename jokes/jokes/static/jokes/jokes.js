@@ -1,6 +1,6 @@
 'use strict';
 
-function registerEventHandlers() {
+function registerEventListener() {
   $('div.setup').on('click', function(event) {
     $(event.target).siblings().css(
       'visibility', 'visible'
@@ -8,4 +8,4 @@ function registerEventHandlers() {
   });
 }
 
-$(document).ready(registerEventHandlers);
+$(document).ready(registerEventListener);

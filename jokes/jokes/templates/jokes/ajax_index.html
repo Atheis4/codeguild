@@ -4,8 +4,22 @@
   <head lang="en">
     <meta charset="utf-8">
     <title>Jokes</title>
+    <link rel="stylesheet" href="{% static 'jokes/style.css' %}">
   </head>
   <body>
-    
+    <h1></h1>
+    <form>
+      <textarea id="setup"></textarea>
+      <textarea id="punch"></textarea>
+      <input type="submit">
+    </form>
+    {% for joke in joke_list %}
+    <section class="joke">
+      <div class="setup">{{ joke.setup }}</div>
+      <div class="punch">{{ joke.punchline }}</div>
+    </section>
+    {% endfor %}
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="{% static 'jokes/ajax.js' %}"></script>
   </body>
 </html>
