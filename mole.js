@@ -1,3 +1,10 @@
+/*-------
+5-16-16:
+
+Create score mechanism, add animations, refine CSS.
+-------*/
+
+
 'use strict';
 
 // 1. INPUT FUNCTIONS
@@ -84,7 +91,7 @@ function registerInitialEventHandlers() {
   $('img').on('click', function(e) {
     $(e.target).attr('src', 'img/whackmolehole.png');
     score += 1;
-    appendH2ElToHeaderEl(score);
+    // appendH2ElToHeaderEl(score);
   });
 }
 

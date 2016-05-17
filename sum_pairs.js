@@ -1,4 +1,10 @@
-"use strict";
+/*-------
+5-16-16:
+
+Review linter issue--check with David's notes for revisions.
+-------*/
+
+'use strict';
 
 // Write a f(x) named find_sum_pairs.
 // It takes 2 arguments: a list of ints to search and a sum to find.
@@ -12,12 +18,12 @@ var find_sum_pairs = function(array, sum) {
 
     if (array.find(function(i){return (i === difference)})){
       sumList.push([number, difference]);
-    };
+    }
 
-  };
+  }
   if (sumList.find(function(i, j){return (j, i === i, j)})){
     sumList.pop([number, difference]);
-  };
+  }
   console.log(sumList);
 };
 

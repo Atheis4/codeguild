@@ -1,15 +1,21 @@
-"use strict";
+/*-------
+5-16-16:
+
+Copied code from Peter--Revise and rewrite.
+-------*/
+
+'use strict';
 
 var namesToAges = {
-    "Alyssa": 22,
-    "Charley": 25,
-    "Dan": 25,
-    "Jeff": 20,
-    "Kasey": 20,
-    "Kim": 20,
-    "Morgan": 25,
-    "Ryan": 25,
-    "Stef": 22
+  'Alyssa': 22,
+  'Charley': 25,
+  'Dan': 25,
+  'Jeff': 20,
+  'Kasey': 20,
+  'Kim': 20,
+  'Morgan': 25,
+  'Ryan': 25,
+  'Stef': 22
 };
 
 var ageCountObj = {};
@@ -25,7 +31,7 @@ for (var name in namesToAges) {
   else {
     ageCountObj[age] = 1;
   }
-};
+}
 
 // new obj created to map the frequency of each age to the age number
 var countAgeObj = {};
@@ -35,7 +41,7 @@ for (var age in ageCountObj) {
   var frequency = ageCountObj[age];
   // maps this frequency to the age completing the key/value swap.
   countAgeObj[frequency] = age;
-};
+}
 
 // creates empty array
 var sortedArray = [];
@@ -43,7 +49,7 @@ var sortedArray = [];
 for (var frequency in countAgeObj) {
   // appends each frequency to our new array
   sortedArray.push(frequency);
-};
+}
 
 // sort method/function/thing sorts array from smallest to largest.
 sortedArray.sort();
