@@ -1,0 +1,64 @@
+body {
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 5%;
+}
+
+section {
+  margin: 2.5% 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+article {
+  display: inline;
+}
+
+.dice {
+  width: 85px;
+  height: 85px;
+  margin: 1%;
+}
+
+.value-1 {
+  background-image: url("img/Dice-1-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.value-2 {
+  background-image: url("img/Dice-2-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.value-3 {
+  background-image: url("img/Dice-3-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.value-4 {
+  background-image: url("img/Dice-4-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.value-5 {
+  background-image: url("img/Dice-5-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.value-6 {
+  background-image: url("img/Dice-6a-b.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
