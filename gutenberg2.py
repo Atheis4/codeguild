@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Look over functions and piping. Does it all make sense? Is there anything that can be simplified?
+"""
+
 import statistics as stats
 
 def open_file_text():
@@ -70,14 +76,9 @@ def main():
 
     # count_to_pairs_ascending_order = sort_triplet_find_top_pairs(count_to_word_pair_tuple)
 
-
-
-
     count_word_pair_triplet = zip(word_pair_count, word_list_stripped, word_list_stripped[1:])
 
-
     # ADVANCED -----------------
-
 
     paired_word_dict = {
         key: {
@@ -102,4 +103,5 @@ def main():
                     print('Possibilities:', paired_word_dict[user_word].keys())
                     print()
 
-main()
+if __name__ == "__main__":
+    main()

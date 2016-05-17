@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Review all classes and methods--They were made when I didn't have a firm understanding of classes.
+"""
+
 class BankAccount:
     """docstring for Account"""
     def __init__(self, name, balance):

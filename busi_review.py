@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Review f(x)s and piping in main()
+"""
+
 import random
 
 raw_business_data = [

@@ -1,6 +1,12 @@
 # Andrew and Matt
 # Connect Four Game
 
+"""
+5-16-16:
+
+Is there a way to utilize looping to automate some of the repetitious actions?
+"""
+
 class Board(object):
     def __init__(self, move_list):
         self.the_board = [[' ' for i in range(7)] for i in range(6)]

@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Look over f(x)s, some seem a little bloated. Is there a way to simplify some of the graphing?
+"""
+
 import urllib.request
 import statistics as stats
 from matplotlib import pyplot as plt

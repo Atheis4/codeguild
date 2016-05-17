@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Considering adding a main() and revising functions to better reflect IPO structure.
+"""
+
 vote_totals_dict = {}
 
 def main():

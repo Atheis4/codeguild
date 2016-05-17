@@ -1,3 +1,10 @@
+"""
+5-16-16:
+
+Review code, it looks as though some of the initial functions aren't being used anymore and could be deleted. Review f(x)s, a few look a little bloated.
+"""
+
+
 def snake_to_camel(word):
     snake_split_list = word.split('_')
     camel_case_list = [word.capitalize() for word in snake_split_list]

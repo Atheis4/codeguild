@@ -1,3 +1,11 @@
+"""
+5-16-16:
+
+Compare the two blackjack_hand programs: how do they differ?
+How's the piping in the main?
+"""
+
+
 import random
 
 class Card:

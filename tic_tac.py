@@ -1,3 +1,10 @@
+"""
+5-16-16:
+
+Can't think of revisions at this time, but I should look through the code line by line once again.
+"""
+
+
 class ListListTTTBoard:
     def __init__(self):
         """Initializes an empty board."""

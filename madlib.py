@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Considering creating lists of nouns, adjectives, adverbs, and verbs to be plugged into the madlib--or referenced by index--using a for loop.
+"""
+
 def noun():
     """ Prompts and recieves a noun as input from user. Returns input as value of function"""
     return input('First we need a NOUN\n> ')

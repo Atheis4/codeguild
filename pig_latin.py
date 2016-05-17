@@ -1,3 +1,9 @@
+"""
+5-16-16:
+
+Considering refactoring functions to remove extraneous variable instances. Also, take a look at f(x) 'translate_word_to_pig_latin' - looks a bit bloated.
+"""
+
 def get_sentence_from_user():
     """sets the local variable sentence to the input given by user, returns this sentence as the value of the function"""
     user_sentence_str = input('Veni, vidi, vici! What would you like to translate?\n> ')

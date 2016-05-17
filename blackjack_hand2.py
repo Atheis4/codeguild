@@ -1,3 +1,10 @@
+"""
+5-16-16:
+
+Compare the two blackjack_hand programs: how do they differ?
+Construct the main()?
+"""
+
 class Card:
     def __init__(self, suit, value):
         self.suit = suit
