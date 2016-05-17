@@ -2,7 +2,7 @@
 
 {% block form %}
 <h2>Enter a setup followed by a punchline in the boxes provided</h2>
-<form action="{% url 'submit' %}" method="post">
+<form action="{% url 'ajax-submit' %}" method="post">
   {% csrf_token %}
   <textarea placeholder="Setup" name="setup"></textarea>
   <textarea placeholder="Punch line" name="punchline"></textarea>

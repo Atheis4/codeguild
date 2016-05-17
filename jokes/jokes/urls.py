@@ -23,13 +23,6 @@ urlpatterns = [
     url(r'^form/', views.render_form, name='form_page'),
     url(r'^submit/', views.render_ack, name='submit'),
 
-    # url(r'^ajax/$', ajax_views.render_index, name="ajax-index"),
-    # url(r'^ajax/submit$', ajax_views.render_ack, name="ajax-submit"),
+    url(r'^ajax/$', ajax_views.render_index, name="ajax-index"),
+    url(r'^ajax/submit$', ajax_views.render_ack, name="ajax-submit"),
 ]
-
-
-
-######
-
-def template(jokes):
-    return jokes[0].setup

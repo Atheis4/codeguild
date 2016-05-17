@@ -1,18 +1,25 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
-  <head lang="en">
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <title>Jokes</title>
     <link rel="stylesheet" href="{% static 'jokes/style.css' %}">
   </head>
   <body>
-    <h1></h1>
-    <form>
-      <textarea id="setup"></textarea>
-      <textarea id="punch"></textarea>
+    <h1><a href="{% url 'ajax-index' %}">Jokestr</a></h1>
+    <a href="{% url 'form_page' %}">Post a joke</a>
+
+    <h2>Enter a setup followed by a punchline in the boxes provided</h2>
+    <form action="{% url 'ajax-submit' %}" method="post">
+      {% csrf_token %}
+      <textarea placeholder="Setup" name="setup"></textarea>
+      <textarea placeholder="Punch line" name="punchline"></textarea>
       <input type="submit">
     </form>
+
+    {% block ack %}
+    {% endblock %}
     {% for joke in joke_list %}
     <section class="joke">
       <div class="setup">{{ joke.setup }}</div>
