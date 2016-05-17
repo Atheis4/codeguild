@@ -1,12 +1,21 @@
-"use strict";
+/*-------
+5-16-16:
+
+First JavaScript Program--review code.
+Utilize the data-structure to replace the integers in calcTaxes f(x).
+Also, rewrite f(x)s.
+--------*/
+
+
+'use strict';
 
 var grossIncome = 0;
 
 var taxMap = {
-  "3350": 0.05,
-  "8400": 0.07,
-  "125000": 0.09,
-  "over": 0.099
+  '3350': 0.05,
+  '8400': 0.07,
+  '125000': 0.09,
+  'over': 0.099
 };
 
 var arrayTaxMap = function(taxMap) {
