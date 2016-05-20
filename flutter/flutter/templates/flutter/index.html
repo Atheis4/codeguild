@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load tz %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,24 +7,28 @@
     <title>All a Flutter</title>
     <link rel="stylesheet" type="text/css" href="{% static 'flutter/style.css' %}">
   </head>
-  <body>
-    <h1>Welcome to Flutter</h1>
-    <h2><a href="{% url 'post' %}">Flutt yo stuff</a></h2>
+  <div class="container">
+    <body>
+      <h1><a href="{% url 'index' %}">Welcome to Flutter</a></h1>
+      <h2><a href="{% url 'post' %}" class="post-link">Flutt yo stuff</a></h2>
 
-    <section>
-      {% if query %}
-      <h1>Search term: {{ query }}</h1>
-      {% endif %}
-      <div class="flutt">
-      {% for flutt in flutt_list %}
-        <h2>{{ flutt.text }}</h2>
-        <p>{{ flutt.date_created }}</p>
-        <p>@<a href="{% url 'user' flutt.user_name %}">{{ flutt.user_name }}</a></p>
-      </div>
-      {% endfor %}
-    </section>
+      <section class="flutt-container">
+        {% if query %}
+        <h3>Search term: {{ query }}</h3>
+        {% endif %}
+        {% for flutt in flutt_list %}
+        <div class="flutt">
+          <h2>{{ flutt.text }}</h2>
+          {% localtime on %}
+          <p>{{ flutt.date_created }}</p>
+          {% endlocaltime %}
+          <p>@<a href="{% url 'user' flutt.user_name %}">{{ flutt.user_name }}</a></p>
+        </div>
+        {% endfor %}
+      </section>
 
-    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
-    <script src="{% static 'flutter/flutter.js' %}"></script>
-  </body>
+      <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+      <script src="{% static 'flutter/flutter.js' %}"></script>
+    </body>
+  </div>
 </html>

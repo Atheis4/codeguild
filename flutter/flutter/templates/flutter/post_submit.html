@@ -6,11 +6,13 @@
     <title>All a Flutter</title>
     <link rel="stylesheet" type="text/css" href="{% static 'flutter/style.css' %}">
   </head>
-  <body>
-    <h1>Your Flutt was submitted!</h1>
-    <p><a href="{% url 'index' %}">view recent flutts</a></p>
+  <div class="container">
+    <body>
+      <h1>Your Flutt was submitted!</h1>
+      <p><a href="{% url 'index' %}">Flutts happening?</a></p>
 
-    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
-    <script src="{% static 'flutter/flutter.js' %}"></script>
-  </body>
+      <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+      <script src="{% static 'flutter/flutter.js' %}"></script>
+    </body>
+  </div>
 </html>
