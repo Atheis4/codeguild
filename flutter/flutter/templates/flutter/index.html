@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>All a Flutter</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'flutter/style.css' %}">
+  </head>
+  <body>
+    <h1>Welcome to Flutter</h1>
+    <h2><a href="{% url 'post' %}">Flutt yo stuff</a></h2>
+
+    <section>
+      {% if query %}
+      <h1>Search term: {{ query }}</h1>
+      {% endif %}
+      <div class="flutt">
+      {% for flutt in flutt_list %}
+        <h2>{{ flutt.text }}</h2>
+        <p>{{ flutt.date_created }}</p>
+        <p>@<a href="{% url 'user' flutt.user_name %}">{{ flutt.user_name }}</a></p>
+      </div>
+      {% endfor %}
+    </section>
+
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="{% static 'flutter/flutter.js' %}"></script>
+  </body>
+</html>

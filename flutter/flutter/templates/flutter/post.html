@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>All a Flutter</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'flutter/style.css' %}">
+  </head>
+  <body>
+    <h1><a href="{% url 'index' %}"></a></h1>
+    <h2>Flutt your stuff!</h2>
+
+    <form action="{% url 'post_submit' %}" method="post">
+      {% csrf_token %}
+      <label>User: <input type="text" name="user_name"></label>
+      <label>Flutt: <input type="text" name="text"></label>
+      <input type="submit">
+    </form>
+
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="{% static 'flutter/flutter.js' %}"></script>
+  </body>
+</html>
