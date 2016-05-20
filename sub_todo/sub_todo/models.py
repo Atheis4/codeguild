@@ -1,11 +1,11 @@
-from django.db import models
+r
 
 class List(models.Model):
     """docstring for List"""
     name = models.TextField()
 
     def __str__(self):
-        return self.name
+        return '{!r}'.format(self.name)
 
     def __repr__(self):
         return 'List(name={!r})'.format(self.name)
