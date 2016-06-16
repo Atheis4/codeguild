@@ -14,7 +14,7 @@
       <form action="{% url 'post_submit' %}" method="post" class="flutt-submit">
         {% csrf_token %}
         <label class="flutt-user">What's your name? <input type="text" name="user_name" class="form-user"></label>
-        <label class="flutt-text">Flutt: <textarea type="text-box" name="text" class="form-flutt"></textarea>
+        <label class="flutt-text">Flutt: <textarea type="text-box" name="text" class="form-flutt"></textarea></label>
         <input type="submit" class="form-submit">
       </form>
 

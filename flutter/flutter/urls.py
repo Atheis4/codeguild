@@ -20,7 +20,7 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.is_there_a_query, name="index"),
-    url(r'^/post$', views.render_post, name="post"),
-    url(r'^/post/submit$', views.render_post_submit, name="post_submit"),
-    url(r'^/(?P<user_name>.+)$', views.render_user, name="user"),
+    url(r'^post$', views.render_post, name="post"),
+    url(r'^post/submit$', views.render_post_submit, name="post_submit"),
+    url(r'^(?P<user_name>.+)$', views.render_user, name="user"),
 ]

@@ -1,13 +1,15 @@
-"""
-5-16-16:
+"""5-16-16.
 
-Look over f(x)s, some seem a little bloated. Is there a way to simplify some of the graphing?
+Look over f(x)s, some seem a little bloated.
+Is there a way to simplify some of the graphing?
 """
 
-import urllib.request
 import statistics as stats
+import urllib.request
+
 from matplotlib import pyplot as plt
 from pylab import axis
+
 
 def import_web_data():
     with urllib.request.urlopen('http://or.water.usgs.gov/non-usgs/bes/sunnyside.rain') as website:

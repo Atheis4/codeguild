@@ -1,3 +1,5 @@
+"""."""
+
 from . import models
 from django.utils import timezone
 import pytz

@@ -19,9 +19,7 @@
         {% for flutt in flutt_list %}
         <div class="flutt">
           <h2>{{ flutt.text }}</h2>
-          {% localtime on %}
           <p>{{ flutt.date_created }}</p>
-          {% endlocaltime %}
           <p>@<a href="{% url 'user' flutt.user_name %}">{{ flutt.user_name }}</a></p>
         </div>
         {% endfor %}
